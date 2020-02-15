@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/try','student@index');
 
 Route::resource('student','Data');
+Route::resource('teacher', 'Teacher_data');

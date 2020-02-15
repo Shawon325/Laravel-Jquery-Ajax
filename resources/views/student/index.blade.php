@@ -9,10 +9,12 @@
 	<tbody>
 		@php $sl=1; @endphp
 		@foreach($students as $student)
-		<td>{{$sl++}}</td>
-		<td>{{$student->student_name}}</td>
-		<td>{{$student->phone_number}}</td>
-		<td>{{$student->status}}</td>
+		<tr>
+			<td>{{$sl++}}</td>
+			<td>{{$student->student_name}}</td>
+			<td>{{$student->phone_number}}</td>
+			<td>{{$student->status}}</td>
+		</tr>
 		@endforeach
 	</tbody>
 </table>
