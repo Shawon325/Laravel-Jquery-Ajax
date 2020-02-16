@@ -15,7 +15,7 @@ class Data extends Controller
      */
     public function index()
     {
-        $student['students']= Student::orderBy('student_name','asc')->get();
+        $student['students']= Student::get();
 
         return view('student.index',$student);
     }
@@ -38,9 +38,12 @@ class Data extends Controller
      */
     public function store(Request $request)
     {
-        echo "<pre>";
-        $data= $request->all();
-        print_r($data);
+        Student::create([
+            'student_name' => $request->student_name,
+            'phone_number' => $request->phone_number,
+            'status' => $request->status
+        ]);
+        echo "Success";
     }
 
     /**

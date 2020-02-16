@@ -17,7 +17,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Name:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control"placeholder="Enter Name" name="names">
+        <input type="text" class="form-control"placeholder="Enter Name" name="name">
       </div>
     </div>
     <div class="form-group">
@@ -29,7 +29,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Phone Number:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control"placeholder="Enter Phone Number" name="names">
+        <input type="number" class="form-control"placeholder="Enter Phone Number" name="phone_number">
       </div>
     </div>
     <div class="form-group">

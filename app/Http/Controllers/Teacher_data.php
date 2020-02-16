@@ -36,9 +36,13 @@ class Teacher_data extends Controller
      */
     public function store(Request $request)
     {
-        echo "<pre>";
-        $data = $request->all();
-        print_r($data);
+        Teacher::create([
+            'name' => $request->name,
+            'department' => $request->department,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address
+        ]);
+        echo "Success";
     }
 
     /**
