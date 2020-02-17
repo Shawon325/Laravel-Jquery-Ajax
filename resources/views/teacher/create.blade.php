@@ -1,4 +1,50 @@
-<!DOCTYPE html>
+@extends('layout.index') 
+
+@section('content')
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Add Student</h3>
+            </div>
+            <form method="post" action="{{route('teacher.store')}}">
+              @csrf
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" placeholder="Enter name" name="name">
+                </div>
+                <div class="form-group">
+                  <label>Department</label>
+                  <input type="text" class="form-control" placeholder="Enter Department" name="department">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="number" class="form-control" placeholder="Enter Phone Number" name="phone_number">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">Address</label>
+                  <input type="text" class="form-control" placeholder="Enter Address" name="address">
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          </div>
+        </div>
+    </section>
+@endsection
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -47,4 +93,4 @@
 </div>
 
 </body>
-</html>
+</html> -->

@@ -41,7 +41,7 @@ class Data extends Controller
         Student::create([
             'student_name' => $request->student_name,
             'phone_number' => $request->phone_number,
-            'status' => $request->status
+            'status'       => $request->status
         ]);
         echo "Success";
     }
