@@ -1,4 +1,4 @@
- @extends('layout.index')
+ @extends('layouts.app')
 
 
 @section('content')
@@ -73,7 +73,7 @@
 <div class="container">
 	<br>
 <a href="{{route('teacher.create')}}"><button class="btn btn-success">Add New</button></a>
-  <h2>Teacher Info</h2>           
+  <h2>Teacher Info</h2>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -102,4 +102,3 @@
 </body>
 </html>
  -->
-

@@ -2,6 +2,9 @@
 
 @section('content')
     <section class="content">
+      @if($success=Session::get('Success'))
+        <div class="alert alert-success">{{$success}}</div>
+      @endif
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
@@ -10,6 +13,15 @@
             <div class="box-header with-border">
               <h3 class="box-title">Add Student</h3>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 			<form method="post" action="{{route('student.store')}}">
 			  @csrf
               <div class="box-body">

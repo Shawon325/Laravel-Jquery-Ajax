@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
-use DB;
+use Session;
 
 class Data extends Controller
 {
@@ -13,9 +13,12 @@ class Data extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $student['students']= Student::get();
+        $perpage = 10;
+        $page = $request->input('page',1);
+        $student['sl'] = (($page-1)*$perpage)+1;
+        $student['students']= Student::orderBy('id' , 'desc')->paginate($perpage);
 
         return view('student.index',$student);
     }
@@ -38,12 +41,14 @@ class Data extends Controller
      */
     public function store(Request $request)
     {
-        Student::create([
-            'student_name' => $request->student_name,
-            'phone_number' => $request->phone_number,
-            'status'       => $request->status
+        $request->validate([
+            'student_name' => 'required',
+            'phone_number' => 'required',
+            'status'       => 'required'
         ]);
-        echo "Success";
+        Student::create($request->all());
+        Session::flash('Success' , 'Data Inserted');
+        return redirect()->back();
     }
 
     /**
@@ -65,7 +70,8 @@ class Data extends Controller
      */
     public function edit($id)
     {
-        //
+        $student['data'] = Student::find($id);
+        return view('student.edit' , $student);
     }
 
     /**
@@ -77,7 +83,14 @@ class Data extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'student_name' => 'required',
+            'phone_number' => 'required',
+            'status'       => 'required'
+        ]);
+        Student::where('id' , $id)->update($data);
+        Session::flash('Success' , 'Data Updated');
+        return redirect()->route('student.index' , $id);
     }
 
     /**
@@ -88,6 +101,8 @@ class Data extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::where('id' , $id)->delete();
+        Session::flash('Success' , 'Data Deleted');
+        return redirect()->route('student.index');
     }
 }
